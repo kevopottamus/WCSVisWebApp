@@ -9,11 +9,11 @@ variable values -->
 <html ng-app="app1" ng-init="person = {fName: 'Derek', lName: 'Banas'};
   capitals = [{city: 'Montgomery', state: 'Alabama'}, {city: 'Juneau', state: 'Alaska'}, {city: 'Phoenix', state: 'Arizona'}]">
   <head>
-    <title>WCS App</title>
+    <title>WCS for Financial</title>
   </head>
   <body>
     
-      <h1>NL Query</h1>
+      <h1>WCS Financial Query</h1>
       
       <style>
         #field{
@@ -67,26 +67,37 @@ variable values -->
       <!-- Expressions bind data to HTML as well -->
       <p>Showing results for "{{first}}"</p>
  
-      <!-- Strings can be built in expressions -->
-      <p>{{person.fName + " " + person.lName}} you entered {{first + " and " + second}}</p>
- 
-      <!-- ng-repeat cycles through a collection -->
-      <ul>
-        <li ng-repeat = "capital in capitals">
-          {{ 'City: ' + capital.city + ', State: ' + capital.state}}
-        </li>
-      </ul>
         
     </div>
       
+    <!-- display bar chart of the data -->
+    <div>
+      <h2>Bar Chart</h2>
+      <section id ="chart"></section>
+      <div id = "chart"> </div>
+    </div>
       
+    
+    <!-- display pie chart from pie.js -->
+    <div>
+      <h2>Pie Chart</h2>
+      <section id ="pie"></section>
+      <div id = "pie"> </div>
+    </div>
       
  
     <!-- Load the AngularJS library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
  
     <!-- Load the JS Module -->
-    <script src="/angulartut/js/exam1.js"></script>
+    <script src="/angulartut/js/app.js"></script>
+    
+    <!-- Load d3 script -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      
+    <!-- specify graph scripts-->
+    <script src = "/angulartut/js/script.js"></script>
+    <script src = "/angulartut/js/pie.js"></script>
       
     <!-- specify location of json file -->
     <script type="text/javascript" src="JSON/response.json"
