@@ -14,10 +14,10 @@ var bardata = barDataY;
 */	
 	var tempColor;
 
-	var margin = {top: 30, right: 30, bottom: 40, left: 50}
+	var margin = {top: 30, right: 30, bottom: 60, left: 140}
 
 	var height = 400 - margin.top - margin.bottom,
-	width = 600 - margin.left - margin.right,
+	width = 700 - margin.left - margin.right,
 	barWidth = 50,
 	barOffset = 5;
 	var colors = d3.scale.linear()
@@ -108,9 +108,14 @@ var bardata = barDataY;
 	var hAxis = d3.svg.axis()
 	.scale(xScale)
 	.orient('bottom')
-	.tickValues(xScale.domain().filter(function (d, i){
+	
+    /* ticks the x axis at every 5 points
+    /*
+    .tickValues(xScale.domain().filter(function (d, i){
 		return !(i % (bardata.length/5));
 	}))
+    */
+    
 
 	var hGuide = d3.select('svg').append('g')
 	hAxis(hGuide)
@@ -119,4 +124,30 @@ var bardata = barDataY;
 		.style({fill: 'none', stroke: "#000"})
 	hGuide.selectAll('line')
 		.style({stroke: "#000"})
+    
+    //label Y axis
+    hGuide.append("text")
+        .attr("class", "y label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -130)
+        .attr("x", height)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text(yField)
+    //lable X axis
+    hGuide.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width/2)
+        .attr("y", 40)
+        .text(xField);
+    //create title label
+    hGuide.append("text")
+        .attr("class", "title label")
+        .attr("y", -height - 20)
+        .attr("x", width/2)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text(queryMessage)
+    
 //});

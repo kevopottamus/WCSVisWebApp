@@ -35,6 +35,7 @@ var piedata = pieData
 //var piedata = pieData;
 
 var pie = d3.layout.pie()
+    .sort(null)
 	.value(function(d){
 		return d.value;
 	})

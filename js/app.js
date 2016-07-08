@@ -8,6 +8,27 @@
     reads in JSON file from local.
 */
 
+//to store the number of entries in json "rows"
+var numOfEntries;
+
+//array of Values arrays
+var arrayVals = [];
+
+//arrays to store data to be passed into barchart
+var barDataY = [];
+var barDataX = [];
+
+//create array of arrays to be passed as pieData
+var pieData = [];
+
+//variables to save the names and types of the datafields
+var xField = "";
+var yField = "";
+var xFieldType = "";
+var yFieldType = "";
+
+var queryMessage = "";
+
 //creates a new instance of an XMLHttpRequest and loads asynchronously response.json 
 // this code was adapted from https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
 function loadJSON(callback){
@@ -22,34 +43,22 @@ function loadJSON(callback){
     xobj.send(null);
 }
 
-//alert("ayy lmao");
-
-//to store the number of entries in json "rows"
-var numOfEntries;
-
-//array of Values arrays
-var arrayVals = [];
-
-//arrays to store data to be passed into barchart
-var barDataY = [];
-var barDataX = [];
-
-//create array of arrays to be passed as pieData
-var pieData = [];
-
 //initializing function to use anonymous callback
 function init(){
     loadJSON(function(response) {
         var actual_JSON = JSON.parse(response);
         //this call gives the first value in array's first entry
-        //alert(actual_JSON.answers[0].answerData.rows[0].values[0]);
         
-        alert("called init");
+        //get names and types of datafields
+        xField = actual_JSON.answers[0].fields[1].name;
+        yField = actual_JSON.answers[0].fields[0].name;
+        xFieldType = actual_JSON.answers[0].fields[1].type;
+        yFieldType = actual_JSON.answers[0].fields[0].type;
+        
+        queryMessage = actual_JSON.message;
         //loop through rows array
         for(i = 0; i < actual_JSON.answers[0].answerData.rows.length; i++) {
-            //alert(actual_JSON.answers[0].answerData.rows[i].values[0]);
             arrayVals.push(actual_JSON.answers[0].answerData.rows[i]);
-            
             
             //assign Y values to be displayed in barDataY array
             barDataY.push(actual_JSON.answers[0].answerData.rows[i].values[0]);
@@ -61,13 +70,11 @@ function init(){
             pieData.push({label: actual_JSON.answers[0].answerData.rows[i].values[1], value: actual_JSON.answers[0].answerData.rows[i].values[0]});
         }
         
-        //alert(numOfEntries);
-        
     });
 }
 
 
-//call init to load json file
+//call init to load json file and set variables
 init();
 
 //declare angular app
@@ -115,7 +122,6 @@ app1.controller('ctrl1', function($scope) {
         $scope.submitted = "Get JSON";
         //init();
         
-        alert(arrayVals[1].values[0]);
     }
     
    
