@@ -2,7 +2,7 @@
     Kevin Huang
     6/27/2019
     IBM ARC
-    exam1.js
+    app.js
     
     JS file that defines controller for angulartut.html,
     reads in JSON file from local.
@@ -45,9 +45,10 @@ function loadJSON(callback){
 
 //initializing function to use anonymous callback
 function init(){
+    
     loadJSON(function(response) {
         var actual_JSON = JSON.parse(response);
-        //this call gives the first value in array's first entry
+       
         
         //get names and types of datafields
         xField = actual_JSON.answers[0].fields[1].name;
@@ -56,6 +57,7 @@ function init(){
         yFieldType = actual_JSON.answers[0].fields[0].type;
         
         queryMessage = actual_JSON.message;
+        
         //loop through rows array
         for(i = 0; i < actual_JSON.answers[0].answerData.rows.length; i++) {
             arrayVals.push(actual_JSON.answers[0].answerData.rows[i]);
@@ -72,7 +74,6 @@ function init(){
         
     });
 }
-
 
 //call init to load json file and set variables
 init();
@@ -121,7 +122,7 @@ app1.controller('ctrl1', function($scope) {
     if($scope.first == "Query response"){
         $scope.submitted = "Get JSON";
         //init();
-        
+        alert(xField);   
     }
     
    

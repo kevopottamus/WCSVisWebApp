@@ -1,5 +1,7 @@
 var bardata = barDataY;
 
+var bardataX = barDataX;
+
 //d3.tsv('data.tsv', function(data){
 	//console.log(data);
 	//for(key in data){
@@ -57,10 +59,10 @@ var bardata = barDataY;
 		})
 		.attr('height', 0)
 		.attr('y', height)
-	.on('mouseover', function(d){
+	.on('mouseover', function(d, i){
 		tooltip.transition()
 			.style('opacity', .9)
-		tooltip.html(d)
+		tooltip.html(xField + ": " + bardataX[i] + " " + yField + ": " + d)
 			.style('left',(d3.event.pageX) + 'px')
 			.style('top',(d3.event.pageY) + 'px')
 
@@ -73,6 +75,8 @@ var bardata = barDataY;
 		d3.select(this)
 			.style('opacity', 1)
 			.style('fill', tempColor)
+        tooltip.transition()
+            .style('opacity', 0)
 	})
 	myChart.transition()
 	.attr('height', function(d){
@@ -109,7 +113,8 @@ var bardata = barDataY;
 	.scale(xScale)
 	.orient('bottom')
 	
-    /* ticks the x axis at every 5 points
+    /*
+    ticks the x axis at every 5 points
     /*
     .tickValues(xScale.domain().filter(function (d, i){
 		return !(i % (bardata.length/5));
