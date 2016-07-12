@@ -31,10 +31,11 @@ var queryMessage = "";
 
 //creates a new instance of an XMLHttpRequest and loads asynchronously response.json 
 // this code was adapted from https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
+
 function loadJSON(callback){
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-    xobj.open('GET', './JSON/response.json', false);
+    xobj.open('GET', 'response.json', false);
     xobj.onreadystatechange = function (){
         if(xobj.readyState == 4 && xobj.status == "200"){
             callback(xobj.responseText);
@@ -48,8 +49,8 @@ function init(){
     
     loadJSON(function(response) {
         var actual_JSON = JSON.parse(response);
-       
         
+        //alert("hey" + actual_JSON.question.answers[0].SQLAnswer[0].answers[0].fields[1].name);
         //get names and types of datafields
         xField = actual_JSON.answers[0].fields[1].name;
         yField = actual_JSON.answers[0].fields[0].name;
@@ -104,8 +105,6 @@ var query = "";
 */
 //declare controller for html file
 app1.controller('ctrl1', function($scope) {
-    
-    
  
     //defines value of the search box
     $scope.first = "";
@@ -122,7 +121,6 @@ app1.controller('ctrl1', function($scope) {
     if($scope.first == "Query response"){
         $scope.submitted = "Get JSON";
         //init();
-        alert(xField);   
     }
     
    

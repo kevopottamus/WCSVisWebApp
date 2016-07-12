@@ -66,20 +66,8 @@ variable values -->
  
       <!-- Expressions bind data to HTML as well -->
       <p>Showing results for "{{first}}"</p>
- 
-        
-    </div>
     
-    <!-- adds angular controller to div element that contains options to display graph -->
-    <div ng-controller="chartctrl">
-    
-        
-    
-      
-    </div>
-      
-    
-    <!-- display bar chart of the data -->
+        <!-- display bar chart of the data -->
     <div>
       <h2>Bar Chart</h2>
       <section id ="chart"></section>
@@ -93,12 +81,46 @@ variable values -->
       <section id ="pie"></section>
       <div id = "pie"> </div>
     </div>
+        
+        
+    </div>
+    
+    <!-- adds angular controller to div element that contains options to display graph -->
+    <div ng-controller="chartctrl">
+    
+        <input type="checkbox"
+            ng-model="string"
+            [name="string"]
+            [ng-true-value="expression"]
+            [ng-false-value="expression"]
+            [ng-change="string"]>
+        
+               
+    
+      
+    </div>
+      
+    
+    <!-- display bar chart of the data 
+    <div>
+      <h2>Bar Chart</h2>
+      <section id ="chart"></section>
+      <div id = "chart"> </div>
+    </div>-->
+      
+    
+    <!-- display pie chart from pie.js 
+    <div>
+      <h2>Pie Chart</h2>
+      <section id ="pie"></section>
+      <div id = "pie"> </div>
+    </div>-->
       
       
       
     <style>
       .arc text{
-        font: 10px sans-serif;
+        font: 12px sans-serif;
         text-anchor: middle;
         }
     
@@ -106,7 +128,7 @@ variable values -->
             stroke: #fff;
         }
         
-        
+    
         
         
     </style>
@@ -116,16 +138,16 @@ variable values -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> 
  
     <!-- Load the JS Module -->
-    <script src="/js/app.js"></script>
+    <script src="app_form1.js"></script>
     
     <!-- Load d3 script -->
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
       
     <!-- specify graph scripts-->
-    <script src = "/js/script.js"></script>
-    <script src = "/js/pie1.js"></script>
+    <script src="script.js"></script>
+    <script src="pie1.js"></script>
       
     <!-- specify location of json file -->
-    <script type="text/javascript" src="/JSON/response.json"></script>
+    <script type="text/javascript" src="response1.json"></script>
   </body>
   </html>

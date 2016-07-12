@@ -1,3 +1,5 @@
+
+
 var bardata = barDataY;
 
 var bardataX = barDataX;
@@ -29,9 +31,12 @@ var bardataX = barDataX;
 	var yScale = d3.scale.linear()
 	.domain([0,d3.max(bardata)])
 	.range([0, height])
-
+    
 	var xScale = d3.scale.ordinal()
-	.domain(d3.range(0, bardata.length))
+	//.domain(d3.range(0, bardata.length))
+    //.domain(d3.range(2010, 2015 + 1))
+    .domain(bardataX)
+    //.domain(d3.range(bardataX[0], bardataX[bardata.length - 1] + 1))
 	.rangeBands([0, width])
 
 	var tooltip = d3.select('body').append('div')
@@ -55,7 +60,8 @@ var bardataX = barDataX;
 			return yScale(d);
 		})
 		.attr('x', function(d,i) {
-			return xScale (i);
+            //
+			return xScale(bardataX[i]);
 		})
 		.attr('height', 0)
 		.attr('y', height)
@@ -85,8 +91,9 @@ var bardataX = barDataX;
 	.attr('y', function(d){
 		return height - yScale(d)
 	})
+    //causes bars to delay on entry
 	.delay(function(d,i){
-		return i * 20;
+		return i * 200;
 	})
 	.duration(1000)
 	.ease('elastic')
@@ -113,13 +120,14 @@ var bardataX = barDataX;
 	.scale(xScale)
 	.orient('bottom')
 	
-    /*
-    ticks the x axis at every 5 points
+    
+    //ticks the x axis at every 5 points
     /*
     .tickValues(xScale.domain().filter(function (d, i){
-		return !(i % (bardata.length/5));
-	}))
-    */
+        return !(i % (bardata.length/5));
+        //return (barDataX[i]);
+	})) */
+    
     
 
 	var hGuide = d3.select('svg').append('g')
