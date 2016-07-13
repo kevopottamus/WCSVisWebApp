@@ -4,6 +4,7 @@ var bardata = barDataY;
 
 var bardataX = barDataX;
 
+
 //d3.tsv('data.tsv', function(data){
 	//console.log(data);
 	//for(key in data){
@@ -25,11 +26,11 @@ var bardataX = barDataX;
 	barWidth = 50,
 	barOffset = 5;
 	var colors = d3.scale.linear()
-	.domain([0, d3.max(bardata)])
+	.domain([0, d3.max(bardata, function(d) { return +d})])
 	.range(['#FFB832', '#C61CCF', '#B58929', '#268BD2'])
 
 	var yScale = d3.scale.linear()
-	.domain([0,d3.max(bardata)])
+	.domain([0,d3.max(bardata, function(d) { return +d})])
 	.range([0, height])
     
 	var xScale = d3.scale.ordinal()
@@ -99,7 +100,7 @@ var bardataX = barDataX;
 	.ease('elastic')
 
 	var vGuideScale = d3.scale.linear()
-	.domain([0, d3.max(bardata)])
+	.domain([0, d3.max(bardata, function(d) { return +d})])
 	.range([height, 0])
 
 	var vAxis = d3.svg.axis()

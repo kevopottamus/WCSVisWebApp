@@ -49,6 +49,6 @@ var svg = d3.select("body").append("svg")
       .text(function(d) { return d.data.label; });
 
 function type(d) {
-  d.population = +d.value;
+  d.value = +d.value;
   return d;
 }
