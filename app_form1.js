@@ -44,7 +44,7 @@ function loadJSON(callback){
     xobj.send(null);
 }
 
-//initializing function to use anonymous callback
+//initializing function to use anonymous callback (loads data from the local json file)
 function init(){
     
     loadJSON(function(response) {
@@ -84,27 +84,25 @@ init();
 //declare angular app
 var app1 = angular.module('app1', []);
 
-//variable defined in wcsfinancial 2.5
-//var query = message.question.text;
+//variable defined in wcsfinancial 2.5 to get the user's query
 var query = "";
 
-//TODO: import jquery for ajax call
 
-//ajax call from the app.js in wcsfinancial 2.5
- /*var deferred = $.ajax({
-					            url: "/TATZIA/api/v1/nlq/answer?q=" + query,
-					            type: "GET",
-					            contentType: "application/json",
-					            headers: {"Content-Type": "application/json", "Accept": "application/json"},
-                                 // url: "/TATZIA/api/v1/question",
-                                 // type: "POST",
-                                 // contentType: "application/json",
-                                 // headers: {"Content-Type": "application/json", "Accept": "application/json"},
-                                 //   data: JSON.stringify(message),
-                                 // dataType: "json"
-                              });
 
-*/
+jQuery.ajax({
+    url: "http://acr046mgt06.almaden.ibm.com:9090/TATZIA/api/v1/nlq/answer?q=" + query,
+    type: "GET",
+    contentType: 'application/json; charset=utf-8',
+    success: function(resultData){
+        alert("data is " + resultData);
+        
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+        alert("getJSON failed, status: " + textStatus + ", error: " + errorThrown);
+    },
+    timeout: 1200 
+});
+
 //declare controller for html file
 app1.controller('ctrl1', function($scope) {
  

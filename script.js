@@ -4,7 +4,7 @@ var bardata = barDataY;
 
 var bardataX = barDataX;
 
-
+//alert("script.js");
 //d3.tsv('data.tsv', function(data){
 	//console.log(data);
 	//for(key in data){
