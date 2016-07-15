@@ -3,7 +3,7 @@
 var bardata = barDataY;
 
 var bardataX = barDataX;
-
+alert("in script");
 //alert("script.js");
 //d3.tsv('data.tsv', function(data){
 	//console.log(data);

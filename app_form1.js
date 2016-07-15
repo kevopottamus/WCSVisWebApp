@@ -78,6 +78,8 @@ function init(){
     });
 }
 
+
+
 //call init to load json file and set variables
 init();
 
@@ -87,7 +89,7 @@ var app1 = angular.module('app1', []);
 //variable defined in wcsfinancial 2.5 to get the user's query
 var query = "";
 
-
+/*
 
 jQuery.ajax({
     url: "http://acr046mgt06.almaden.ibm.com:9090/TATZIA/api/v1/nlq/answer?q=" + query,
@@ -102,7 +104,7 @@ jQuery.ajax({
     },
     timeout: 1200 
 });
-
+*/
 //declare controller for html file
 app1.controller('ctrl1', function($scope) {
  
