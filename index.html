@@ -13,7 +13,7 @@ variable values -->
   </head>
   <body>
     
-      <h1>WCS Financial Query</h1>
+      <h1 id="pageHeader">WCS Financial Query</h1>
       
       <style>
         #field{
@@ -41,6 +41,10 @@ variable values -->
             border: 1px solid #3079ED;
             -moz-border-radius: 2px;
             -webkit-border-radius: 2px;
+          }
+          #pageHeader {
+              font-family: "HelveticaNeue-Bold", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+              font-weight: 300;
           }
       </style>
  
@@ -161,24 +165,37 @@ td {
         }   
         
     </style>
+        
+    <title>Gantt Chart Example 1</title>
+<link type="text/css" href="http://mbostock.github.io/d3/style.css" rel="stylesheet" />
+<link type="text/css" href="example.css" rel="stylesheet" />
+<body>
+    <a id="JSONButton" href="vhttp://dk8996.github.io/Gantt-Chart/" target="_blank">Show raw JSON</a>
+</body>
       
  
     <!-- Load the AngularJS library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> 
     
+        <!-- Load d3 script -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <!-- Load jquery -->
     <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
  
-    <!-- Load the JS Module -->
+        	<script type="text/javascript" src="gantt-chart-d3.js"></script>
+	<script type="text/javascript" src="gantt.js"></script>
+    
+        <!-- Load the JS Module -->
     <script src="app_form1.js"></script>
     
-    <!-- Load d3 script -->
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    
       
     <!-- specify graph scripts-->
     <script src="script.js"></script>
     <script src="pie.js"></script>
     <script src="table.js"></script>
+
+
       
     <!-- specify location of json file -->
     <script type="text/javascript" src="response1.json"></script>

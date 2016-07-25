@@ -75,11 +75,13 @@ function init(){
             pieData.push({label: actual_JSON.question.answers[0].SQLAnswer[0].answers[0].answerData.rows[i].values[1], value: actual_JSON.question.answers[0].SQLAnswer[0].answers[0].answerData.rows[i].values[0]});
         }
         
+        
+        
     });
 }
 
 
-
+renderGantt();
 //call init to load json file and set variables
 init();
 
